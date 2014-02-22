@@ -14,12 +14,10 @@ game = {
 	current_message = "Sample Message",
 	time_day=0, time_hour=6, time_minute=0,
 	version = "0.8.0",
-	sx = 1, sy = 1, --scale factor
 	tile = true,
 	fullscreen_hack = "no"
 }
 
-scalefactor = 0.3
 game_map = {}
 game_tiles = {} --image files from tiles
 game_walls = {} --image files from walls
@@ -148,12 +146,6 @@ function love.keypressed( key, isrepeat )
 		else
 			love.event.quit()
 		end
-	elseif key == "insert" then
-		game.sx = game.sx+scalefactor
-		game.sy = game.sy+scalefactor
-	elseif key == "delete" then
-		game.sx = game.sx-scalefactor
-		game.sy = game.sy-scalefactor
 	elseif key == "f1" then 
 		if game.default_collision == "attack" then game.default_collision = "look"
 		elseif game.default_collision == "look" then game.default_collision = "talk"
@@ -217,91 +209,71 @@ function love.keypressed( key, isrepeat )
 		if game.mode == 95 then
 			game.look_x = game.look_x -1
 		else
-			if game.tile == true then
-				game.draw_x = game.draw_x-50
-			else
-				if game_map[py][px-1] == "D" then
-					load_newzone("west", game.player_world_x, game.player_world_y)
-					game.player_world_x = game.player_world_x-1
-					game.player_loc_x = table.getn(game_map)-2
-					if game.tile == true then
-						game.draw_x = game.draw_x-50
-					else
-						game.draw_x = game.draw_x- (table.getn(game_map)-2)*8
-					end
-					increase_gametime()
-				end
-				if px > 2 and game_map[py][px-1] ~= "t" and game_map[py][px-1] ~= "#" and game_map[py][px-1] ~= "l" then
-					game.player_loc_x = game.player_loc_x -1
-					game.draw_x=game.draw_x+1*8
-					increase_gametime()
-				end
+			if game_map[py][px-1] == "D" then
+				load_newzone("west", game.player_world_x, game.player_world_y)
+				game.player_world_x = game.player_world_x-1
+				game.player_loc_x = table.getn(game_map)-2
+				game.draw_x = game.draw_x- (table.getn(game_map)-2)*8
+				increase_gametime()
+			end
+			if px > 2 and game_map[py][px-1] ~= "t" and game_map[py][px-1] ~= "#" and game_map[py][px-1] ~= "l" then
+				game.player_loc_x = game.player_loc_x -1
+				game.draw_x=game.draw_x+1*8
+				increase_gametime()
 			end
 		end
 	elseif key == "right" then
 		if game.mode == 95 then
 			game.look_x = game.look_x +1
 		else
-			if game.tile == true then
-					game.draw_x = game.draw_x+50
-				else
-				if game_map[py][px+1] == "D" then
-					load_newzone("east", game.player_world_x, game.player_world_y)
-					game.player_world_x = game.player_world_x+1
-					game.player_loc_x = 2
-					game.draw_x = game.draw_x+ (table.getn(game_map)-2)*8
-					increase_gametime()
-				end
-				if game_map[py][px+1] ~= "t" and game_map[py][px+1] ~= "#" and game_map[py][px+1] ~= "l" then
-					game.player_loc_x = game.player_loc_x +1
-					game.draw_x=game.draw_x-1*8
-					increase_gametime()
-				end
+			if game_map[py][px+1] == "D" then
+				load_newzone("east", game.player_world_x, game.player_world_y)
+				game.player_world_x = game.player_world_x+1
+				game.player_loc_x = 2
+				game.draw_x = game.draw_x+ (table.getn(game_map)-2)*8
+				increase_gametime()
+			end
+			if game_map[py][px+1] ~= "t" and game_map[py][px+1] ~= "#" and game_map[py][px+1] ~= "l" then
+				game.player_loc_x = game.player_loc_x +1
+				game.draw_x=game.draw_x-1*8
+				increase_gametime()
 			end
 		end
 	elseif key == "up" then
 		if game.mode == 95 then
 			game.look_y = game.look_y -1
 		else
-			if game.tile == true then
-				game.draw_y = game.draw_y-50
-			else
-				if game_map[py-1][px] == "D" then
-					load_newzone("north", game.player_world_x, game.player_world_y)
-					game.player_world_y = game.player_world_y-1
-					game.player_loc_y = table.getn(game_map)-2
-					game.draw_y = game.draw_y- (table.getn(game_map)-2)*14
-					increase_gametime()
-				end
-				if py > 2 and game_map[py-1][px] ~= "t" and game_map[py-1][px] ~= "#" and game_map[py-1][px] ~= "l" then
-					game.player_loc_y = game.player_loc_y -1
-					game.draw_y=game.draw_y+1*14
-					increase_gametime()
-				end
+			if game_map[py-1][px] == "D" then
+				load_newzone("north", game.player_world_x, game.player_world_y)
+				game.player_world_y = game.player_world_y-1
+				game.player_loc_y = table.getn(game_map)-2
+				game.draw_y = game.draw_y- (table.getn(game_map)-2)*14
+				increase_gametime()
+			end
+			if py > 2 and game_map[py-1][px] ~= "t" and game_map[py-1][px] ~= "#" and game_map[py-1][px] ~= "l" then
+				game.player_loc_y = game.player_loc_y -1
+				game.draw_y=game.draw_y+1*14
+				increase_gametime()
 			end
 		end
 	elseif key == "down" then
 		if game.mode == 95 then
 			game.look_y = game.look_y +1
 		else
-			if game.tile == true then
-				game.draw_y = game.draw_y+50
-			else
-				if game_map[py+1][px] == "D" then
-					load_newzone("south", game.player_world_x, game.player_world_y)
-					game.player_world_y = game.player_world_y+1
-					game.player_loc_y = 2
-					game.draw_y = game.draw_y + (table.getn(game_map)-2)*14
-					increase_gametime()
-				end
-				if game_map[py+1][px] ~= "t" and game_map[py+1][px] ~= "#"  and game_map[py+1][px] ~= "l" then
-					--game.draw_y = game.draw_y -1
-					game.player_loc_y = game.player_loc_y +1
-					game.draw_y=game.draw_y-1*14
-					increase_gametime()
-				end
-			end--endiftile==true
-		end
+			if game_map[py+1][px] == "D" then
+				load_newzone("south", game.player_world_x, game.player_world_y)
+				game.player_world_y = game.player_world_y+1
+				game.player_loc_y = 2
+				game.draw_y = game.draw_y + (table.getn(game_map)-2)*14
+				increase_gametime()
+			end
+			if game_map[py+1][px] ~= "t" and game_map[py+1][px] ~= "#"  and game_map[py+1][px] ~= "l" then
+				--game.draw_y = game.draw_y -1
+				game.player_loc_y = game.player_loc_y +1
+				game.draw_y=game.draw_y-1*14
+				increase_gametime()
+			end
+		end--endif95
 	end--endif key
 end--endfunction
 function love.update()

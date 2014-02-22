@@ -46,7 +46,6 @@ function on_load_tiles() --load the tiles
 end --end function
 
 function draw_tiles()
-	love.graphics.scale(game.sx)
-	love.graphics.draw(game_tiles[1], 0+game.draw_x, 0+game.draw_y, 0)
-	love.graphics.draw(game_walls[1], 0+game.draw_x+115, 0+game.draw_y-190, 0)
+	love.graphics.draw(game_tiles[1], 0+game.draw_x, 0+game.draw_y, 0, 1+game.sx, 1+game.sy)
+	love.graphics.draw(game_walls[1], 0+game.draw_x+115, 0+game.draw_y-190, 0, 1+game.sx, 1+game.sy)
 end
