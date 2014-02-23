@@ -225,7 +225,7 @@ function love.keypressed( key, isrepeat )
 					game.player_world_x = game.player_world_x-1
 					game.player_loc_x = table.getn(game_map)-2
 					if game.tile == true then
-						game.draw_x = game.draw_x-50
+						game.draw_x = game.draw_x+50
 					else
 						game.draw_x = game.draw_x- (table.getn(game_map)-2)*8
 					end
@@ -243,7 +243,7 @@ function love.keypressed( key, isrepeat )
 			game.look_x = game.look_x +1
 		else
 			if game.tile == true then
-					game.draw_x = game.draw_x+50
+					game.draw_x = game.draw_x-50
 				else
 				if game_map[py][px+1] == "D" then
 					load_newzone("east", game.player_world_x, game.player_world_y)
@@ -264,7 +264,7 @@ function love.keypressed( key, isrepeat )
 			game.look_y = game.look_y -1
 		else
 			if game.tile == true then
-				game.draw_y = game.draw_y-50
+				game.draw_y = game.draw_y+50
 			else
 				if game_map[py-1][px] == "D" then
 					load_newzone("north", game.player_world_x, game.player_world_y)
@@ -285,7 +285,7 @@ function love.keypressed( key, isrepeat )
 			game.look_y = game.look_y +1
 		else
 			if game.tile == true then
-				game.draw_y = game.draw_y+50
+				game.draw_y = game.draw_y-50
 			else
 				if game_map[py+1][px] == "D" then
 					load_newzone("south", game.player_world_x, game.player_world_y)

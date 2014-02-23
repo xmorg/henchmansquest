@@ -46,7 +46,23 @@ function on_load_tiles() --load the tiles
 end --end function
 
 function draw_tiles()
-	love.graphics.scale(game.sx)
-	love.graphics.draw(game_tiles[1], 0+game.draw_x, 0+game.draw_y, 0)
-	love.graphics.draw(game_walls[1], 0+game.draw_x+115, 0+game.draw_y-190, 0)
+	love.graphics.push()	love.graphics.scale(game.sx)
+	for y = 1, game.tilecount do
+		for x = 1, game.tilecount do
+			tile_x = (y + x) * 125 +250  --250 + 125
+			tile_y = (y - x) * 125 /2 + (129/2) --129 / 2 + 64
+			--tile_x = (y - x) * (w/2)+w
+			--tile_y = (y + x) * (w/2) /2 + (h/2)
+			--lx = 300+(y - x) * 32 + 64
+			--ly = -100+(y + x) * 32 / 2 + 50
+			
+			--if y == 1 and x == 1 then love.graphics.setColor(255,0,0,180)
+			--elseif y == 1 and x == 2 then love.graphics.setColor(100,0,0,180)
+			--else love.graphics.setColor(255,255,255,255) end
+			love.graphics.setColor(100,100,0,120)
+			love.graphics.draw(game_tiles[1], tile_x+game.draw_x, tile_y+game.draw_y, 0)
+			--love.graphics.draw(game_walls[1], tile_x+game.draw_x+115, tile_y+game.draw_y-190, 0)
+		end--end for
+	end --end for
+	love.graphics.pop()
 end
