@@ -12,11 +12,11 @@ function draw_table(gmap, chairs, x,y)
 	--=h=
 	--hOh
 	--=h=
-	gmap[y][x+1] = "h"
-	gmap[y+1][x]  = "h"
-	gmap[y+1][x+1] = "O"
-	gmap[y+1][x+2] = "h"
-	gmap[y+2][x+1] = "h"
+	--gmap[y][x+1] = "h"
+	--gmap[y+1][x]  = "h"
+	--gmap[y+1][x+1] = "O"
+	--gmap[y+1][x+2] = "h"
+	--gmap[y+2][x+1] = "h"
 end
 
 function put_dungeon_wall(vh, loc)
@@ -24,14 +24,14 @@ function put_dungeon_wall(vh, loc)
 		for y=1, game.tilecount do
 			trand=math.random(1,10)
 			if trand ~=1 then
-				game_map[y][loc] = "#"
+				game_map[y][loc] = 4
 			end
 		end
 	else --2        --horiz
 		for x=1, game.tilecount do
 			trand=math.random(1,8)
 			if trand ~=1 then
-				game_map[loc][x] = "#"
+				game_map[loc][x] = 4
 			end
 		end
 	end
@@ -46,19 +46,19 @@ function place_walls(wtype, thick, lx, ly, lw, lh)
 	door_pos = math.random(2, thick-1)
 	for y=1, lh do
 		for x=1, lw do
-			game_map[ly+y][lx+x]= "#"
+			game_map[ly+y][lx+x]= 4
 		end
 	end
 	for y=2, lh-1 do
 		for x=2, lw-1 do
-			game_map[ly+y][lx+x]= "+"
+			game_map[ly+y][lx+x]= 4
 		end
 	end
 end
 function place_garden(gtype, bsize, lx, ly)
 	for y=1, bsize do
 		for x=1, bsize do
-				game_map[ly+y][lx+x]= "Y"
+				game_map[ly+y][lx+x]= 5
 		end
 	end
 end
@@ -76,18 +76,18 @@ function place_building(btype, bsize, lx, ly)
 	door_pos = math.random(1, 4)
 	for y=1, bsize do
 		for x=1, bsize do
-				game_map[ly+y][lx+x]= "#"
+				game_map[ly+y][lx+x]= 4
 		end
 	end
 	for y=2, bsize-1 do
 		for x=2, bsize-1 do
-			game_map[ly+y][lx+x]= "+"
+			game_map[ly+y][lx+x]= 4
 		end
 	end
-	if door_pos == 1 then game_map[ly+1][lx+door_loc] = "+"
-	elseif door_pos == 2 then game_map[ly+door_loc][lx+1] = "+"
-	elseif door_pos == 3 then game_map[ly+bsize][lx+door_loc] = "+"
-	elseif door_pos == 4 then game_map[ly+door_loc][lx+bsize] = "+"
+	if door_pos == 1 then game_map[ly+1][lx+door_loc] = 4
+	elseif door_pos == 2 then game_map[ly+door_loc][lx+1] = 4
+	elseif door_pos == 3 then game_map[ly+bsize][lx+door_loc] = 4
+	elseif door_pos == 4 then game_map[ly+door_loc][lx+bsize] = 4
 	end	
 end
 
@@ -102,22 +102,22 @@ function create_town_map(walls)--walls boolean
 		for x=1, game.tilecount  do
 			--treerand = math.random(1,20)
 			--if treerand == 1 then
-			--	game_map[y][x] = "t"
+			--	game_map[y][x] = 5
 			treerand = math.random(1,70)
 			if x > 1 and x < game.tilecount and y > 1 and y < game.tilecount then
 				if treerand == 1 then
-					table.insert(game_map[y], "t")
+					table.insert(game_map[y], 5)
 				elseif treerand > 14 then
-					table.insert(game_map[y], ".")
+					table.insert(game_map[y], 5)
 				else
-					table.insert(game_map[y], ",")
+					table.insert(game_map[y], 5)
 				end
 			elseif x == game.tilecount/2 and y == 1 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == game.tilecount/2 and y == game.tilecount then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			else
-				table.insert(game_map[y], "#")
+				table.insert(game_map[y], 4)
 			end--endif
 		end--endfor x
 	end--endfor
@@ -134,9 +134,9 @@ function create_town_map(walls)--walls boolean
 	place_walls(1, game.tilecount-5, 1, 1,  game.tilecount-1,5)
 	place_walls(1, 5, game.tilecount-5, 1, 5, game.tilecount-1)
 	for y=2, 7 do --ensure exit is not blocked by walls
-		game_map[y][game.tilecount/2] = "+"
-		game_map[y][game.tilecount/2+1] = "+"
-		game_map[game.tilecount-y][game.tilecount/2] = "+"
+		game_map[y][game.tilecount/2] = 4
+		game_map[y][game.tilecount/2+1] = 4
+		game_map[game.tilecount-y][game.tilecount/2] = 4
 	end
 	create_fog_of_war(game.tilecount)
 end
@@ -153,33 +153,34 @@ function create_forest_map(deadness)--1-10 1 being green 10 being brown
 			treerand = math.random(1,20)
 			deadrand = math.random(1,10-deadness) 
 			if treerand == 1 then
-				if deadrand == 1 then
-					game_map[y][x] = "l" --dead tree
-				else
-					game_map[y][x] = "t" --green tree
-				end
+				table.insert(game_map[y][x], 5)
+				--if deadrand == 1 then
+				--	game_map[y][x] = "l" --dead tree
+				--else
+				--	game_map[y][x] = 5 --green tree
+				--end
 			elseif x > 1 and x < game.tilecount and y > 1 and y < game.tilecount then
 				if treerand > 14 then
-					table.insert(game_map[y], ".")
+					table.insert(game_map[y], 5)
 				else
-					table.insert(game_map[y], ",")
+					table.insert(game_map[y], 5)
 				end
 			elseif x == game.tilecount/2 and y == 1 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == 1 and y == game.tilecount/2 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == game.tilecount and y == game.tilecount/2 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == game.tilecount/2 and y == game.tilecount then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			else
-				table.insert(game_map[y], "t")
+				table.insert(game_map[y], 5) -- tree
 			end--endif
 		end--endfor x
 	end--endfor
 	watercount = math.random(1, 20)
 	for x=1,watercount do
-		place_water(0, math.random(5,10), math.random(3, game.tilecount-11), math.random(3, game.tilecount-11))
+	--	place_water(0, math.random(5,10), math.random(3, game.tilecount-11), math.random(3, game.tilecount-11))
 	end
 	create_fog_of_war(game.tilecount)
 end
@@ -194,15 +195,15 @@ function create_sea_map()--1-10 1 being green 10 being brown
 		table.insert(obj_map, x_obj_map)
 		for x=1, game.tilecount  do
 			if x == game.tilecount/2 and y == 1 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == 1 and y == game.tilecount/2 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == game.tilecount and y == game.tilecount/2 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			elseif x == game.tilecount/2 and y == game.tilecount then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			else
-				table.insert(game_map[y], "~")
+				table.insert(game_map[y], 5)
 			end--endif
 		end--endfor x
 	end--endfor
@@ -210,24 +211,22 @@ function create_sea_map()--1-10 1 being green 10 being brown
 end
 
 function create_inn_map()
+	game.tilecount = 20
 	game_map = {}
-	create_forest_map(1)
-	for y=20, 40 do
+	for y=1, game.tilecount do
 		x_temp_map = {}
 		x_obj_map = {}
-		--table.insert(game_map, x_temp_map)
-		--table.insert(obj_map, x_obj_map)
-		for x=20, 40  do
-			if x > 20 and x < 40 and y > 20 and y < 40 then
-				game_map[y][x] = "="
-			elseif (x == 30 or x==29 or x==31) and y == 20 then
-				game_map[y][x] =  "="
-			else
-				game_map[y][x] =  "#"
-			end--endif
+		table.insert(game_map, x_temp_map)
+		table.insert(obj_map, x_obj_map)
+		for x=1, game.tilecount  do
+			if game.tile == true then 
+				game_map[y][x] = 1
+			else 
+				game_map[y][x] = "=" 
+			end
 		end--endfor x
 	end--endfor
-	draw_table(game_map, 4, 5,5)
+	--draw_table(game_map, 4, 5,5)
 	create_fog_of_war(game.tilecount)
 end
 
@@ -261,11 +260,11 @@ function create_dungeon_map(size)
 		table.insert(obj_map, x_obj_map)
 		for x=1, game.tilecount  do
 			if x > 1 and x < game.tilecount and y > 1 and y < game.tilecount then
-				table.insert(game_map[y], "+")
+				table.insert(game_map[y], 4)
 			elseif x == game.tilecount/2 and y == 1 then
-				table.insert(game_map[y], "D")
+				table.insert(game_map[y], 5)
 			else
-				table.insert(game_map[y], "#")
+				table.insert(game_map[y], 4)
 			end--endif
 		end--endfor x
 	end--endfor

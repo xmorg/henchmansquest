@@ -2,8 +2,11 @@ game = {
 	mode = 1,
 	tilecount = 30, 
 	drawcount = 50,
-	draw_x = 200, --80, --where to start drawing the map
+	draw_x = -800, --80, --where to start drawing the map
 	draw_y = 200, --40,
+	mouse_cursor_x = 1,
+	mouse_cursor_y = 1,
+	cam_move = 150,
 	player_loc_x = 15,
 	player_loc_y = 15,
 	look_x = player_loc_x,
@@ -13,7 +16,7 @@ game = {
 	default_collision = "attack",
 	current_message = "Sample Message",
 	time_day=0, time_hour=6, time_minute=0,
-	version = "0.8.0",
+	version = "0.9.0",
 	sx = 1, sy = 1, --scale factor
 	tile = true,
 	fullscreen_hack = "no"
@@ -134,6 +137,33 @@ function love.mousepressed(x, y, button)
 	end--endif
 end
 
+function on_key_left()
+	if game.mode == 95 then
+		game.look_x = game.look_x -1
+	else
+		if game.tile == true then
+			game.draw_x = game.draw_x + game.cam_move
+		else
+			if game_map[py][px-1] == "D" then
+				load_newzone("west", game.player_world_x, game.player_world_y)
+				game.player_world_x = game.player_world_x-1
+				game.player_loc_x = table.getn(game_map)-2
+				if game.tile == true then
+					game.draw_x = game.draw_x+50
+				else
+					game.draw_x = game.draw_x- (table.getn(game_map)-2)*8
+				end
+				increase_gametime()
+			end
+			if px > 2 and game_map[py][px-1] ~= "t" and game_map[py][px-1] ~= "#" and game_map[py][px-1] ~= "l" then
+				game.player_loc_x = game.player_loc_x -1
+				game.draw_x=game.draw_x+1*8
+				increase_gametime()
+			end
+		end
+	end
+end
+
 function love.keypressed( key, isrepeat )
 	local px = game.player_loc_x
 	local py = game.player_loc_y
@@ -214,36 +244,13 @@ function love.keypressed( key, isrepeat )
 				chunk()
 			end
 	elseif key == "left" then
-		if game.mode == 95 then
-			game.look_x = game.look_x -1
-		else
-			if game.tile == true then
-				game.draw_x = game.draw_x-50
-			else
-				if game_map[py][px-1] == "D" then
-					load_newzone("west", game.player_world_x, game.player_world_y)
-					game.player_world_x = game.player_world_x-1
-					game.player_loc_x = table.getn(game_map)-2
-					if game.tile == true then
-						game.draw_x = game.draw_x+50
-					else
-						game.draw_x = game.draw_x- (table.getn(game_map)-2)*8
-					end
-					increase_gametime()
-				end
-				if px > 2 and game_map[py][px-1] ~= "t" and game_map[py][px-1] ~= "#" and game_map[py][px-1] ~= "l" then
-					game.player_loc_x = game.player_loc_x -1
-					game.draw_x=game.draw_x+1*8
-					increase_gametime()
-				end
-			end
-		end
+		on_key_left()
 	elseif key == "right" then
 		if game.mode == 95 then
 			game.look_x = game.look_x +1
 		else
 			if game.tile == true then
-					game.draw_x = game.draw_x-50
+					game.draw_x = game.draw_x - game.cam_move
 				else
 				if game_map[py][px+1] == "D" then
 					load_newzone("east", game.player_world_x, game.player_world_y)
@@ -264,7 +271,7 @@ function love.keypressed( key, isrepeat )
 			game.look_y = game.look_y -1
 		else
 			if game.tile == true then
-				game.draw_y = game.draw_y+50
+				game.draw_y = game.draw_y+game.cam_move
 			else
 				if game_map[py-1][px] == "D" then
 					load_newzone("north", game.player_world_x, game.player_world_y)
@@ -285,7 +292,7 @@ function love.keypressed( key, isrepeat )
 			game.look_y = game.look_y +1
 		else
 			if game.tile == true then
-				game.draw_y = game.draw_y-50
+				game.draw_y = game.draw_y-game.cam_move
 			else
 				if game_map[py+1][px] == "D" then
 					load_newzone("south", game.player_world_x, game.player_world_y)
