@@ -16,7 +16,7 @@ game = {
 	default_collision = "attack",
 	current_message = "Sample Message",
 	time_day=0, time_hour=6, time_minute=0,
-	version = "0.9.0",
+	version = "0.8.0",
 	sx = 1, sy = 1, --scale factor
 	tile = true,
 	fullscreen_hack = "no"
