@@ -2,8 +2,8 @@ game = {
 	mode = 1,
 	tilecount = 30, 
 	drawcount = 50,
-	draw_x = -800, --80, --where to start drawing the map
-	draw_y = 200, --40,
+	draw_x = -200, --80, --where to start drawing the map
+	draw_y = 100, --40,
 	mouse_cursor_x = 1,
 	mouse_cursor_y = 1,
 	cam_move = 150,
@@ -434,6 +434,11 @@ function love.draw_cam_viewable()
 	love.graphics.print("Time: ".. game.time_day..":"..game.time_hour..":"..game.time_minute.. "   " ..px.."X"..py..game_map[py][px], 642,14)
 	--time_day=0, time_hour=0, time_minute=0
 end
+function draw_player(x,y)
+	if game.version == "0.8.0" then
+		love.graphics.drawq(female_darkelf, walk_south[1], 300,300)
+	end
+end
 function love.draw()
 	if game.mode == 1 then --game
 		if game.tile == true then 
@@ -459,6 +464,7 @@ function love.draw()
 	end
 	if game.mode == 500 then
 		draw_tiles()
+		draw_player()
 		--love.graphics.print("_", x*8-4+dx,y*14+dy )
 	end
 end

@@ -150,8 +150,8 @@ function create_forest_map(deadness)--1-10 1 being green 10 being brown
 		table.insert(game_map, x_temp_map)
 		table.insert(obj_map, x_obj_map)
 		for x=1, game.tilecount  do
-			treerand = math.random(1,20)
-			deadrand = math.random(1,10-deadness) 
+			treerand = 1 --math.random(1,20)
+			deadrand = 1 
 			if treerand == 1 then
 				table.insert(game_map[y][x], 5)
 				--if deadrand == 1 then
