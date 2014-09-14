@@ -43,6 +43,4 @@ function love.update()
 end
 
 function love.draw()
-	--love.graphics.draw( image, quad, x, y, r, sx, sy)
-	love.graphics.draw( x32_landTiles_iso, ground_quad[1], 200, 200, 0, 1, 1)
 end
