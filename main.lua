@@ -5,8 +5,16 @@ ground_tiles_x = 10
 ground_tiles_y = 20
 ground_pic_size_x = 320
 ground_pic_size_y = 320
-ground_quad = {}                     
+ground_quad = {}         
 
+game = {
+	player_loc_x =0
+	player_loc_y =0
+	draw_y =0
+	draw_x =0
+}
+
+require("draw")
 
 function love.load()
 	--tiles	--love.graphics.newQuad( x, y, width, height, sw, sh )
