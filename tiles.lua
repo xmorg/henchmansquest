@@ -18,6 +18,8 @@ function on_load_tiles() --load the tiles
    local walls_files = nil
    --local sprites_files = nil
    --tiles
+
+   
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile001.png") )
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile002.png") )
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile003.png") )
@@ -25,6 +27,8 @@ function on_load_tiles() --load the tiles
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile005.png") )
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile006.png") )
    table.insert(tile_images,love.graphics.newImage("data/tiles/tile007.png") )
+
+   table.insert(tile_images,love.graphics.newImage("data/tiles/tile999.png") )
    --walls
    table.insert(tile_images,love.graphics.newImage("data/walls/cube_wall001.png") )
    table.insert(tile_images,love.graphics.newImage("data/walls/cube_wall002.png") )
@@ -62,18 +66,35 @@ function draw_tiles()
    love.graphics.push()	love.graphics.scale(game.sx)
    for y = 1, game.tilecount do
       for x = 1, game.tilecount do
-	 tile_x = (y + x) * 125 +250  --250 + 125
-	 tile_y = (y - x) * 125 /2 + (129/2) --129 / 2 + 64
+	 tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
+	 tile_y = game.draw_y+(y - x) * 125 /2 + (129/2) --129 / 2 + 64
 	 --tile_x = (y + x) * 16 +32  --250 + 125
 	 --tile_y = (y - x) * 16 /2 + (16/2) --129 / 2 + 64
 	 love.graphics.setColor(255,255,255,255)
 	 --tile_images = {}
 	 --wall_images = {}
 	 love.graphics.draw(tile_images[tile_map[y][x]],tile_x+game.draw_x, tile_y+game.draw_y, 0)
+
+	 --if y == game.tile_selected_y and x == game.tile_selected_x then
+	 --    love.graphics.draw(tile_images[8], tile_x+game.draw_x, tile_y+game.draw_y, 0)
+	 -- end
 	 --love.graphics.draw(wall_images[1], tile_x+game.draw_x+115, tile_y+game.draw_y-190, 0)
       end--end for
    end --end for
    --love.graphics.draw(land_tiles[1],game.mouse_cursor_x+game.draw_x, game.mouse_cursor_y+game.draw_y, 0)
    --if x == game.mouse_cursor_x and y == game.mouse_cursor_y then  end
    love.graphics.pop()
+end
+
+function draw_select_grid()
+   --draw_select_grid()
+   for y = 1, game.tilecount do
+      for x = 1, game.tilecount do
+	 tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
+	 tile_y = game.draw_y+(y - x) * 125 /2 + (129/2) --129 / 2 + 64
+	 if y == game.tile_selected_y and x == game.tile_selected_x then
+	    love.graphics.draw(tile_images[8], tile_x+game.draw_x, tile_y+game.draw_y, 0)
+	 end
+      end
+   end
 end

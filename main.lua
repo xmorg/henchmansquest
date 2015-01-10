@@ -23,7 +23,9 @@ game = {
    give_direction = "None",
    screen_width = 800,
    screen_height = 600,
-   scroll_speed = 3
+   scroll_speed = 3,
+   tile_selected_x = 1,
+   tile_selected_y = 1
 }
 
 --require("draw")
@@ -34,9 +36,11 @@ end
 
 function love.update()
    update_checkscrolling(love.mouse.getX(), love.mouse.getY())
+   update_selected_tile()
 end
 
 function love.draw()
-	--love.graphics.draw( image, quad, x, y, r, sx, sy)
-	draw_tiles()
+   --love.graphics.draw( image, quad, x, y, r, sx, sy)
+   draw_tiles()
+   draw_select_grid()
 end

@@ -29,7 +29,8 @@ item_armors = { --name, protection,resistance(to damage), integraty(piercing), w
 	{"vest", 1,1,1,5,0,2,0},
 	{"hauberk",2,1,1,5,0,2,0}, 
 	{"mail", 3,2,2,5,0,2,0},
-	{"coat",4,3,3,5,0,2,0}
+	{"coat",4,3,3,5,0,2,0},
+	{"platemail",4,4,4,8,1,3,1}
 }
 item_helmet = { --name, protection,resistance(to damage), integraty(piercing), weight, flame, cold, magic
 	{"cap", 0,1,0,5,0,2,0}, 
