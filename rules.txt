@@ -1,0 +1,20 @@
+Action points: each unit gets 4 action points.
+
+Attack action points
+       2      base normal attack
+       -1     Hasted
+       +1     Crippled
+       +1     Winded
+       +2     Slowed
+
+Hitting your Target
+When you attack your target, you role one dice to check to see if you hit.  The defender also rolls a dice to see if he can succesfully evade the attack.
+  -1   If experienced
+  -1   If blind
+  0    Proficient
+  +1   If Expert
+  +1   If Master
+
+Archer perks
+Sniper:		+1 to hit, if held in possition for 1 turn.
+Sitting Duck:	+1 tp hit, if target held in possition for 1 turn.

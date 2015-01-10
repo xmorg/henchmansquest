@@ -1,5 +1,10 @@
+require("tiles")
+require("mouse")
+
 tile_images = {}
 wall_images = {}
+tile_map = {}
+wall_map = {}
 
 ground_tiles_x = 10
 ground_tiles_y = 20
@@ -8,28 +13,30 @@ ground_pic_size_y = 320
 ground_quad = {}         
 
 game = {
-	player_loc_x =0,
-	player_loc_y =0,
-	draw_y =0,
-	draw_x =0
+   tilecount = 10,
+   player_loc_x =0,
+   player_loc_y =0,
+   draw_y = 100,
+   draw_x = -600,
+   mouse_last_x =0,
+   mouse_last_y =0,
+   give_direction = "None",
+   screen_width = 800,
+   screen_height = 600,
+   scroll_speed = 3
 }
 
 --require("draw")
 
 function love.load()
-	--tiles
-	table.insert(tile_images,love.graphics.newImage("data/tiles/tile001.png") )
-	table.insert(tile_images,love.graphics.newImage("data/tiles/tile002.png") )
-	--walls
-	table.insert(tile_images,love.graphics.newImage("data/walls/cube_wall001.png") )
-	--sprites
-	--UI
+   on_load_tiles() -- tiles.lua
 end
 
 function love.update()
+   update_checkscrolling(love.mouse.getX(), love.mouse.getY())
 end
 
 function love.draw()
 	--love.graphics.draw( image, quad, x, y, r, sx, sy)
-	love.graphics.draw( x32_landTiles_iso, ground_quad[1], 200, 200, 0, 1, 1)
+	draw_tiles()
 end
