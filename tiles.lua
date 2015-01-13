@@ -63,7 +63,7 @@ function on_load_tiles() --load the tiles
 end --end function
 
 function draw_tiles()
-   love.graphics.push()	love.graphics.scale(game.sx)
+   love.graphics.push()	love.graphics.scale(game.zoom_level)
    for y = 1, game.tilecount do
       for x = 1, game.tilecount do
 	 tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
@@ -88,6 +88,7 @@ end
 
 function draw_select_grid()
    --draw_select_grid()
+   love.graphics.push()	love.graphics.scale(game.zoom_level)
    for y = 1, game.tilecount do
       for x = 1, game.tilecount do
 	 tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
@@ -97,4 +98,5 @@ function draw_select_grid()
 	 end
       end
    end
+   love.graphics.pop()
 end

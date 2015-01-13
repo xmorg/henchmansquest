@@ -107,6 +107,10 @@ function love.mousepressed(x, y, button)
    if button == "l" then
       game.printx = x		--game.printx = 0 -- 0  -62
       game.printy = y      --game.printy = 0 -- 536-600 --0, 64
+      if game.play_mode == "menu" then
+	 game.play_mode = "tactical"
+      end
+      
       if game.show_menu == 1 then
       	game_menu_mouse(x,y,"l")
       end

@@ -1,5 +1,6 @@
 require("tiles")
 require("mouse")
+require("primatives")
 
 tile_images = {}
 wall_images = {}
@@ -20,18 +21,37 @@ game = {
    draw_x = -600,
    mouse_last_x =0,
    mouse_last_y =0,
+   play_mode = "menu",
    give_direction = "None",
    screen_width = 800,
    screen_height = 600,
    scroll_speed = 3,
    tile_selected_x = 1,
-   tile_selected_y = 1
+   tile_selected_y = 1,
+   zoom_level = 1
 }
 
 --require("draw")
 
+function love.keypressed(key)
+   if key == "escape" then
+      love.event.quit()
+   end
+   if key == "c" and game.play_mode == "tactical" then
+      --game/zoom_level
+      if game.zoom_level > 0 then
+	 game.zoom_level = game.zoom_level - 0.2
+      end
+   elseif key == "v" and game.play_mode == "tactical" then
+      --game/zoom_level
+      game.zoom_level = game.zoom_level + 0.2
+   end
+end
+
 function love.load()
-   on_load_tiles() -- tiles.lua
+   menu_scroll = love.graphics.newImage("data/ui/title_scroll.png")
+   title_menu_text = love.graphics.newImage("data/ui/title_menu_text.png")
+   on_load_tiles()
 end
 
 function love.update()
@@ -41,6 +61,10 @@ end
 
 function love.draw()
    --love.graphics.draw( image, quad, x, y, r, sx, sy)
-   draw_tiles()
-   draw_select_grid()
+   if game.play_mode == "menu" then
+      draw_menu()
+   elseif game.play_mode == "tactical" then
+      draw_tiles()
+      draw_select_grid()
+   end
 end

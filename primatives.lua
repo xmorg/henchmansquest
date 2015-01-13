@@ -1,3 +1,8 @@
+function draw_menu()
+   love.graphics.draw(menu_scroll, 0, 0)
+   love.graphics.draw(title_menu_text, 50, 200)
+end
+
 function draw_border(r, g, b, a)
 	love.graphics.setColor(r,g,b,a)
 	love.graphics.rectangle("fill", 0,0, love.graphics.getWidth(), 14) --top
