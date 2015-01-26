@@ -68,7 +68,7 @@ function love.draw()
    if game.play_mode == "menu" then
       draw_menu()
    elseif game.play_mode == "character generator" then
-      
+      display_actor_stats(actor, editing)--actor object, boolean viewable
    elseif game.play_mode == "tactical" then
       draw_tiles()
       draw_select_grid()
