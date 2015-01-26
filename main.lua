@@ -53,7 +53,7 @@ function love.load()
    menu_scroll = love.graphics.newImage("data/ui/title_scroll.png")
    title_menu_text = love.graphics.newImage("data/ui/title_menu_text.png")
    on_load_tiles()
-   --game.player = create_actor_blank()
+   game.player = create_actor_blank()
 end
 
 function love.update()
