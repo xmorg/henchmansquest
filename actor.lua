@@ -201,33 +201,28 @@ function update_actor_chargen(a, key, mouse_B, mouse_x, mouse_y) --updates based
 	end--endif
 end
 
-function create_actor(game, level,chargen) --create a random actor
-	a = {
-			name = "random",
-			a_type = "human",
-			sex = math.random(0,1), --0 female, 1 male
-			strength = 1,
-			agility =  1,
-			intel   =  1,
-			stamina =  1,
-			luck    =  1,
-			charisma = 1,
-			health = 1,
-			maxhealth = 1,
-			background = "None",
-			editing_name = 0,
-			edited       = 0, -- have we rolled yet?
-			current_stat = 1,
-			max_stat = 6,
-			loc_x = 0,
-			loc_y = 0
-		}
-	if chargen == false then --randomize the actor
-		a = randomize_actor(a, nil)
-	else -- chargen == true
-		game.mode = 100
-	end--endif
-	return a --return the actor to the "pointer" hehe.
+function create_actor_blank() --create a blank actor
+   a = {
+      name = "random",
+      a_type = "human",
+      sex = math.random(0,1), --0 female, 1 male
+      strength = 1,
+      agility =  1,
+      intel   =  1,
+      stamina =  1,
+      luck    =  1,
+      charisma = 1,
+      health = 1,
+      maxhealth = 1,
+      background = "None",
+      editing_name = 0,
+      edited       = 0, -- have we rolled yet?
+      current_stat = 1,
+      max_stat = 6,
+      loc_x = 0,
+      loc_y = 0
+   }
+   return a --return the actor to the "pointer" hehe.
 end
 function draw_char_info(actor)
 	draw_border(255,255,255,255)--require("primatives")

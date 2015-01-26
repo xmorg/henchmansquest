@@ -52,17 +52,22 @@ function love.load()
    menu_scroll = love.graphics.newImage("data/ui/title_scroll.png")
    title_menu_text = love.graphics.newImage("data/ui/title_menu_text.png")
    on_load_tiles()
+   game.player = create_actor_blank()
 end
 
 function love.update()
-   update_checkscrolling(love.mouse.getX(), love.mouse.getY())
-   update_selected_tile()
+   if game.play_mode == "tactical" then
+      update_checkscrolling(love.mouse.getX(), love.mouse.getY())
+      update_selected_tile()
+   end
 end
 
 function love.draw()
    --love.graphics.draw( image, quad, x, y, r, sx, sy)
    if game.play_mode == "menu" then
       draw_menu()
+   elseif game.play_mode == "character generator" then
+      
    elseif game.play_mode == "tactical" then
       draw_tiles()
       draw_select_grid()
