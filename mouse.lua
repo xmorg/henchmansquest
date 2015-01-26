@@ -1,3 +1,37 @@
+function love.mousepressed(x, y, button)
+   function mouse_clicked_inrect(x,y, cx, cy, cw, ch) -- clicked in a rectangle
+      if y >= cy and y <= cy+ch and 
+      x >= cx and x <= cx+cw then
+	 return 1
+      else
+	 return 0
+      end
+   end
+   if button == "l" and game.play_mode == "menu" then
+      game.printx = x		--game.printx = 0 -- 0  -62
+      game.printy = y      --game.printy = 0 -- 536-600 --0, 64
+      if game.play_mode == "menu" then
+	 game.play_mode = "character generator"
+      end
+   elseif button == "l" and game.play_mode == "character generator" then
+   	game.play_mode == "tactical"
+   elseif button == "l" and game.play_mode == "tactical" then
+      game.mouse_last_x =  love.mouse.getX()
+      game.mouse_last_y =  love.mouse.getY()
+      game.give_direction = "Scrolling"
+   elseif button == "wu" and game.play_mode == "tactical" then
+      t = 1
+      game.zoom_level = game.zoom_level + 0.2
+   elseif button == "wd" and game.play_mode == "tactical" then
+      t = 2
+      if game.zoom_level > 0 then
+	 game.zoom_level = game.zoom_level - 0.2
+      end
+   end
+end
+
+
+
 function update_checkscrolling(mx, my)
    if game.mouse_last_x > mx and love.mouse.isDown("l") and game.give_direction == "Scrolling" then
       game.draw_x = game.draw_x-game.scroll_speed
@@ -101,34 +135,4 @@ function on_dig_where_click()
    	villagers_do_job(game_directives.location_x, game_directives.location_y, "miner")
    	play_sound(sound_click)
    end -- if game_map[game.tile_selected_y][game.tile_selected_x] > 2 then
-end
-
-function love.mousepressed(x, y, button)
-   function mouse_clicked_inrect(x,y, cx, cy, cw, ch) -- clicked in a rectangle
-      if y >= cy and y <= cy+ch and 
-      x >= cx and x <= cx+cw then
-	 return 1
-      else
-	 return 0
-      end
-   end
-   if button == "l" and game.play_mode == "menu" then
-      game.printx = x		--game.printx = 0 -- 0  -62
-      game.printy = y      --game.printy = 0 -- 536-600 --0, 64
-      if game.play_mode == "menu" then
-	 game.play_mode = "tactical"
-      end
-   elseif button == "l" and game.play_mode == "tactical" then
-      game.mouse_last_x =  love.mouse.getX()
-      game.mouse_last_y =  love.mouse.getY()
-      game.give_direction = "Scrolling"
-   elseif button == "wu" and game.play_mode == "tactical" then
-      t = 1
-      game.zoom_level = game.zoom_level + 0.2
-   elseif button == "wd" and game.play_mode == "tactical" then
-      t = 2
-      if game.zoom_level > 0 then
-	 game.zoom_level = game.zoom_level - 0.2
-      end
-   end
 end
