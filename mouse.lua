@@ -14,7 +14,7 @@ function love.mousepressed(x, y, button)
 	 game.play_mode = "character generator"
       end
    elseif button == "l" and game.play_mode == "character generator" then
-   	game.play_mode == "tactical"
+   	game.play_mode = "tactical"
    elseif button == "l" and game.play_mode == "tactical" then
       game.mouse_last_x =  love.mouse.getX()
       game.mouse_last_y =  love.mouse.getY()
