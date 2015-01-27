@@ -25,6 +25,14 @@ Backstabber +2 to hit if attacking directly behind.
 
 Sling - kills if rolling a 6 (headshot)  if stone or clay bullets are used a headshot can be deflected by a "helmet roll".  Iron and steel bullets do not need to defeat a helmet roll unless the helmet is also iron/steel. If your attack roll is lower than 6 then the attack cannot be fatal. The following are possible 5, knockout, 4, knockdown, 3 blinded, 2 bruised.
 
+chop - Chop is bladed force cuts.  It partains mostly to Axes.  Chop has a bonus against shield rolls, and can kill with a 5+
+
+Slash - Slash partains to slashing weapons, like swords, sabers and the cutlass.  slashing does not offer any bonus against shields or armor.  It does however add more bleed points than other weapons, and a better kill threshold. a 4+ is fatal.
+
+Maces/Hammers: heavy weapons that are good at bashing armor.  They are slower, and have a -1 penalty to the defensive roll.  They have a starting bonus of +1 against armor.  Maces require a 6+ to kill, and can cause bone breaks at 4+
+
+Piercing: Anything pointy is piercing (including sword thrusts)  piercing has a bonus against armor.  Some weapons like awlpikes, war picks and bodkin arrors have an additional bonus against plate armor.  It requires a 6+ to kill, and anyting else just causes +1 to bleed.
+
 Defensive rolls are executed by the defender of an attack.  The defender will first try to dodge or parry an attack.  if that fails, they can still attempt to block with their shield, or glance the blow off armor.  if all else fails, and the attacker scores a direct hit, the defender dies, or gets the "Bleed" status.  Heavier armor can reduce "bleed" to "Bruise".
 
 Defend/dodge/parry roll - your first line of defense is to no be there.  Evade your enemy or parry his weapon with your own.
