@@ -8,11 +8,15 @@ Offer your services to the "main character" in a number of different ways.  Part
 
 random musing about rules.
 
+Negative effects
+
 Poison - must overcome a survial roll each round until dead or until the poison passes.(stamina check?)
 
 Bleed - must overcome a bleed survival roll each round until dead or until the bleeding stops. Each level of bleed creates a bleed survival penalty, vs the bleed roll.  Applying bandages can stop the bleeding after 2 rounds.  Applying bandages and balm can stop the bleeding in 1 round. (stamina check)
 
 Blind - unable to see in either one or 2 eyes. Of course blind is less effective on a creater with more eyes and more effective on creatures with less eyes.  Creatures which are keen of hearing or smelling cannot be blinded.
+
+Dismemberment - Loosing a limb, causes the Bleed effect, and a cripple effect based on what was lost.  A lost leg doubles the action points required to walk.  A lost Arm causes the weapon/shield to be dropped and the arm to be unusable.
 
 Warrior skills
 Expert/Master melee ads +1 to melee roll
