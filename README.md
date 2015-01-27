@@ -25,7 +25,7 @@ Backstabber +2 to hit if attacking directly behind.
 
 Sling - kills if rolling a 6 (headshot)  if stone or clay bullets are used a headshot can be deflected by a "helmet roll".  Iron and steel bullets do not need to defeat a helmet roll unless the helmet is also iron/steel. If your attack roll is lower than 6 then the attack cannot be fatal. The following are possible 5, knockout, 4, knockdown, 3 blinded, 2 bruised.
 
-chop - Chop is bladed force cuts.  It partains mostly to Axes.  Chop has a bonus against shield rolls, and can kill with a 5+
+Chop - Chop is bladed force cuts.  It partains mostly to Axes.  Chop has a bonus against shield rolls, and can kill with a 5+  Chop can also cause bleed 2+ and dismemberment with a roll of 4.
 
 Slash - Slash partains to slashing weapons, like swords, sabers and the cutlass.  slashing does not offer any bonus against shields or armor.  It does however add more bleed points than other weapons, and a better kill threshold. a 4+ is fatal.
 
