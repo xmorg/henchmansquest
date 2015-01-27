@@ -45,6 +45,3 @@ Shield roll - protect yourself with your shieild.  Shields are weak against axes
 
 Armor roll- last line of defense is to protect your vitals with your armor. leather or higher allows for an armor roll. you get a penalty if not proficient(also a dodge penalty) Chain adds +1 to an armor roll but is vulnerable to piercing.(-1) and axes(-1)  plate adds +2 to the armor roll but is also vulnerable to peircing (-1)
 
-piercing - strong against armor but rarely kills outright, instead most peircing adds a level of bleed to the defender. 
-
-
