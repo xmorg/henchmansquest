@@ -1,3 +1,14 @@
+button_exit = {screen = "title menu", x = 0, y = 0, w = 0, h = 0 }
+
+function button_pressed(mouse_x, mouse_y, button_rect)
+	if mouse_x >= button_rect.x and <= button_rect.x + button_rect.w  and 
+		mouse_y >= button_rect.y and mouse_y <= button_rect.y + button_rect.w then
+		return true
+	else
+		return false
+	end
+end
+
 function love.mousepressed(x, y, button)
    function mouse_clicked_inrect(x,y, cx, cy, cw, ch) -- clicked in a rectangle
       if y >= cy and y <= cy+ch and 
