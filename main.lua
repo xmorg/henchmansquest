@@ -67,6 +67,7 @@ function love.draw()
    --love.graphics.draw( image, quad, x, y, r, sx, sy)
    if game.play_mode == "menu" then
       draw_menu()
+      love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
    elseif game.play_mode == "character generator" then
       display_actor_stats(game.player, editing)--actor object, boolean viewable
    elseif game.play_mode == "tactical" then
