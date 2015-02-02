@@ -22,8 +22,8 @@ function title_menu_buttons(mouse_x, mouse_y)
 		game.play_mode = "menu"
 	elseif button_pressed(mouse_x, mouse_y, button_credits) == true then
 		game.play_mode = "menu"
-	elseif button_pressed(mouse_x, mouse_y, button_credits) == true then
-		game.play_mode = "menu"
+	elseif button_pressed(mouse_x, mouse_y, button_exit) == true then
+		game.play_mode = "exit"
 	else
 		game.play_mode = "menu"
 	end
