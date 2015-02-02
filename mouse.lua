@@ -1,4 +1,8 @@
-button_exit = {screen = "title menu", x = 1, y = 0, w = 0, h = 0 }
+button_newgame = {screen = "title menu", x = 40, y = 205, w = 200, h = 40 }
+button_continue = {screen = "title menu", x = 40, y = 268, w = 200, h = 40 }
+button_options = {screen = "title menu", x = 40, y = 330, w = 200, h = 40 }
+button_credits = {screen = "title menu", x = 40, y = 387, w = 200, h = 40 }
+button_exit = {screen = "title menu", x = 40, y = 445, w = 200, h = 40 }
 
 function button_pressed(mouse_x, mouse_y, button_rect)
 	if mouse_x >= button_rect.x and <= button_rect.x + button_rect.w  and 
