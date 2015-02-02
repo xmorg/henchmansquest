@@ -13,6 +13,22 @@ function button_pressed(mouse_x, mouse_y, button_rect)
 	end
 end
 
+function title_menu_buttons(mouse_x, mouse_y)
+	if button_pressed(mouse_x, mouse_y, button_newgame) == true then
+		game.play_mode = "character generator"
+	elseif button_pressed(mouse_x, mouse_y, button_continue) == true then
+		game.play_mode = "menu"
+	elseif button_pressed(mouse_x, mouse_y, button_options) == true then
+		game.play_mode = "menu"
+	elseif button_pressed(mouse_x, mouse_y, button_credits) == true then
+		game.play_mode = "menu"
+	elseif button_pressed(mouse_x, mouse_y, button_credits) == true then
+		game.play_mode = "menu"
+	else
+		game.play_mode = "menu"
+	end
+end
+
 function love.mousepressed(x, y, button)
    if button == "l" and game.play_mode == "menu" then
       game.printx = x		--game.printx = 0 -- 0  -62
