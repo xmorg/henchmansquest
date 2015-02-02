@@ -1,4 +1,4 @@
-button_exit = {screen = "title menu", x = 0, y = 0, w = 0, h = 0 }
+button_exit = {screen = "title menu", x = 1, y = 0, w = 0, h = 0 }
 
 function button_pressed(mouse_x, mouse_y, button_rect)
 	if mouse_x >= button_rect.x and <= button_rect.x + button_rect.w  and 
@@ -10,14 +10,6 @@ function button_pressed(mouse_x, mouse_y, button_rect)
 end
 
 function love.mousepressed(x, y, button)
-   function mouse_clicked_inrect(x,y, cx, cy, cw, ch) -- clicked in a rectangle
-      if y >= cy and y <= cy+ch and 
-      x >= cx and x <= cx+cw then
-	 return 1
-      else
-	 return 0
-      end
-   end
    if button == "l" and game.play_mode == "menu" then
       game.printx = x		--game.printx = 0 -- 0  -62
       game.printy = y      --game.printy = 0 -- 536-600 --0, 64
