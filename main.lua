@@ -58,8 +58,10 @@ end
 
 function love.update()
    if game.play_mode == "tactical" then
-      update_checkscrolling(love.mouse.getX(), love.mouse.getY())
-      update_selected_tile()
+   	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
+   	update_selected_tile()
+   elseif game.play_mode == "exit" then
+   	love.event.quit()
    end
 end
 
