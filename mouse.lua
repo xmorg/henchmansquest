@@ -4,38 +4,37 @@ button_options = {screen = "title menu", x = 40, y = 330, w = 200, h = 40 }
 button_credits = {screen = "title menu", x = 40, y = 387, w = 200, h = 40 }
 button_exit = {screen = "title menu", x = 40, y = 445, w = 200, h = 40 }
 
-function button_pressed(mouse_x, mouse_y, button_rect)
-	if mouse_x >= button_rect.x and <= button_rect.x + button_rect.w  and 
-		mouse_y >= button_rect.y and mouse_y <= button_rect.y + button_rect.w then
-		return true
-	else
-		return false
-	end
+ function mouse_clicked_inrect(x,y, cx, cy, cw, ch) -- clicked in a rectangle
+    if y >= cy and y <= cy+ch and x >= cx and x <= cx+cw then
+       return 1
+    else
+       return 0
+    end
+ end
+
+function get_button(button)
+   return button.x, button.y, button.w, button.h
 end
 
 function title_menu_buttons(mouse_x, mouse_y)
-	if button_pressed(mouse_x, mouse_y, button_newgame) == true then
-		game.play_mode = "character generator"
-	elseif button_pressed(mouse_x, mouse_y, button_continue) == true then
-		game.play_mode = "menu"
-	elseif button_pressed(mouse_x, mouse_y, button_options) == true then
-		game.play_mode = "menu"
-	elseif button_pressed(mouse_x, mouse_y, button_credits) == true then
-		game.play_mode = "menu"
-	elseif button_pressed(mouse_x, mouse_y, button_exit) == true then
-		game.play_mode = "exit"
-	else
-		game.play_mode = "menu"
-	end
+   if mouse_clicked_inrect(mouse_x, mouse_y, get_button(button_newgame)) == 1 then
+      game.play_mode = "character generator"
+   elseif mouse_clicked_inrect(mouse_x, mouse_y, get_button(button_continue)) == 1 then
+      game.play_mode = "menu"
+   elseif mouse_clicked_inrect(mouse_x, mouse_y, get_button(button_options)) == 1 then
+      game.play_mode = "menu"
+   elseif mouse_clicked_inrect(mouse_x, mouse_y, get_button(button_credits)) == 1 then
+      game.play_mode = "menu"
+   elseif mouse_clicked_inrect(mouse_x, mouse_y, get_button(button_exit)) == 1 then
+      love.event.quit()
+   else
+      game.play_mode = "menu"
+   end
 end
 
 function love.mousepressed(x, y, button)
    if button == "l" and game.play_mode == "menu" then
-      game.printx = x		--game.printx = 0 -- 0  -62
-      game.printy = y      --game.printy = 0 -- 536-600 --0, 64
-      if game.play_mode == "menu" then
-	 game.play_mode = "character generator"
-      end
+      title_menu_buttons(x,y)
    elseif button == "l" and game.play_mode == "character generator" then
    	game.play_mode = "tactical"
    elseif button == "l" and game.play_mode == "tactical" then
