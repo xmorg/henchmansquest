@@ -87,7 +87,7 @@ function update_selected_tile() -- wherever the mouse is, update the selected ti
       for x = 1, game.tilecount do
 	 --lx =  game.draw_x+(y + x) * 129 +250            --250 + 125
 	 --ly =  game.draw_y+(y - x) * 129 /2 + (129/2)    --129 / 2 + 64
-	 lx =  game.draw_x+(y + x) * tizey +tsizex            --250 + 125
+	 lx =  game.draw_x+(y + x) * tsizey +tsizex            --250 + 125
 	 ly =  game.draw_y+(y - x) * tsizey /2 + (tsizey/2)    --129 / 2 + 64
 	 --if(mouse_x >= lx+game.draw_x and mouse_x <= lx+game.draw_x+250 and
 	 --   mouse_y >= ly+game.draw_y and mouse_y <= ly+game.draw_y+129) then
