@@ -80,8 +80,8 @@ function update_selected_tile() -- wherever the mouse is, update the selected ti
    mouse_x = love.mouse.getX()
    mouse_y = love.mouse.getY()
 
-   tsizex = 250
-   tsizey = 129
+   tsizex = 250 * game.zoom_level
+   tsizey = 129 * game.zoom_level
    
    for y = 1, game.tilecount do
       for x = 1, game.tilecount do
