@@ -79,21 +79,20 @@ end
 function update_selected_tile() -- wherever the mouse is, update the selected tile.
    mouse_x = love.mouse.getX()
    mouse_y = love.mouse.getY()
+
+   tsizex = 250
+   tsizey = 129
+   
    for y = 1, game.tilecount do
       for x = 1, game.tilecount do
-	 -- tile_x = (y + x) * 125 +250  --250 + 125
-	 --tile_y = (y - x) * 125 /2 + (129/2) --129 / 2 + 64
-	 lx = game.draw_x+(y + x) * 125 +250  --250 + 125
-	 ly = game.draw_y+(y - x) * 125 /2 + (129/2) --129 / 2 + 64
-	 --lx = 300+(y - x) * 32 + 64
-	 --ly = -100+(y + x) * 32 / 2 + 50
-	 -- function -----  game tiles map table ---- isometric loc
-	 --if(mouse_x >= lx+game.draw_x and mouse_x <= lx+game.draw_x+64 and mouse_y >= ly+game.draw_y+60 and mouse_y <= ly+game.draw_y+100) then
-	 if(mouse_x >= lx+game.draw_x and mouse_x <= lx+game.draw_x+250 and mouse_y >= ly+game.draw_y and mouse_y <= ly+game.draw_y+129) then
+	 lx =  game.draw_x+(y + x) * 129 +250            --250 + 125
+	 ly =  game.draw_y+(y - x) * 129 /2 + (129/2)    --129 / 2 + 64
+	 if(mouse_x >= lx+game.draw_x and mouse_x <= lx+game.draw_x+250 and
+	    mouse_y >= ly+game.draw_y and mouse_y <= ly+game.draw_y+129) then
 	    --put the number of the selected tile
 	    game.tile_selected_x = x
 	    game.tile_selected_y = y
-	    game.loc_selected_x = lx+game.draw_x+ 250
+	    game.loc_selected_x = lx+game.draw_x+ 250 + 32
 	    game.loc_selected_y = ly+game.draw_y+ 129
 	 end--endif
       end--endfor x

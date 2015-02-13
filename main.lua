@@ -52,6 +52,8 @@ end
 function love.load()
    menu_scroll = love.graphics.newImage("data/ui/title_scroll.png")
    title_menu_text = love.graphics.newImage("data/ui/title_menu_text.png")
+   cg_bg = love.graphics.newImage("data/ui/08_gradient_background.jpg")
+   cg_selector = love.graphics.newImage("data/ui/09_selector.png")
    on_load_tiles()
    game.player = create_actor_blank()
 end
@@ -71,6 +73,13 @@ function love.draw()
       draw_menu()
       love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
    elseif game.play_mode == "character generator" then
+      love.graphics.draw(cg_bg)
+      love.graphics.draw(cg_selector, game.screen_width/2, 0)
+      love.graphics.draw(cg_selector, 0, 200)
+      love.graphics.draw(cg_selector, 0, 250)
+      love.graphics.draw(cg_selector, 0, 300)
+      love.graphics.draw(cg_selector, 0, 350)
+      
       display_actor_stats(game.player, editing)--actor object, boolean viewable
    elseif game.play_mode == "tactical" then
       draw_tiles()
