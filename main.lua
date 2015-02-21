@@ -50,6 +50,11 @@ function love.keypressed(key)
 end
 
 function love.load()
+   ui_pack = love.graphics.newImage("data/ui/10_uipack.png")
+   --0,20, 201,20 --top field
+   --0,40,40,20 -- plus,minus
+   ui_pack_editfield = love.graphics.newQuad(0,20,200,20,240,200)
+   ui_pack_plusminus = love.graphics.newQuad(0,40,40,20,240,200)
    menu_scroll = love.graphics.newImage("data/ui/title_scroll.png")
    title_menu_text = love.graphics.newImage("data/ui/title_menu_text.png")
    cg_bg = love.graphics.newImage("data/ui/08_gradient_background.jpg")
@@ -74,13 +79,20 @@ function love.draw()
       love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
    elseif game.play_mode == "character generator" then
       love.graphics.draw(cg_bg)
-      love.graphics.draw(cg_selector, game.screen_width/2, 0)
-      love.graphics.draw(cg_selector, 0, 200)
-      love.graphics.draw(cg_selector, 0, 250)
-      love.graphics.draw(cg_selector, 0, 300)
-      love.graphics.draw(cg_selector, 0, 350)
+      love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width/2, 0)
+      love.graphics.print("Name", game.screen_width/2 +30 , 4)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 200)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,200)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 221)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,221)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 241)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,241)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 261)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,261)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 281)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,281)
       
-      display_actor_stats(game.player, editing)--actor object, boolean viewable
+      --display_actor_stats(game.player, editing)--actor object, boolean viewable
    elseif game.play_mode == "tactical" then
       draw_tiles()
       draw_select_grid()

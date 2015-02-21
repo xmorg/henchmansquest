@@ -113,7 +113,21 @@ function display_actor_stats(actor, editing)--actor object, boolean viewable
 	local coll_one = 20
 	local coll_two = 230
 	love.graphics.setColor(255,255,255,255)
-	love.graphics.print("Name: ".. actor.name, coll_one, line_num*14)
+
+	love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width/2, 0)
+	love.graphics.print("Name: ".. actor.name, game.screen_width/2 +30 , 4)
+	love.graphics.draw(ui_pack, ui_pack_editfield, 0, 200)
+	love.graphics.draw(ui_pack, ui_pack_plusminus, 200,200)
+	love.graphics.draw(ui_pack, ui_pack_editfield, 0, 221)
+	love.graphics.draw(ui_pack, ui_pack_plusminus, 200,221)
+	love.graphics.draw(ui_pack, ui_pack_editfield, 0, 241)
+	love.graphics.draw(ui_pack, ui_pack_plusminus, 200,241)
+	love.graphics.draw(ui_pack, ui_pack_editfield, 0, 261)
+	love.graphics.draw(ui_pack, ui_pack_plusminus, 200,261)
+	love.graphics.draw(ui_pack, ui_pack_editfield, 0, 281)
+	love.graphics.draw(ui_pack, ui_pack_plusminus, 200,281)
+	
+	--love.graphics.print("Name: ".. actor.name, coll_one, line_num*14)
 	love.graphics.print("Race: ".. actor.a_type, coll_two, line_num*14) 
 	love.graphics.print("Sex: "..sex_if_an(actor), coll_two+200, line_num*14) line_num=line_num+1
 	love.graphics.print("============================================================", coll_one, line_num*14)line_num=line_num+1
