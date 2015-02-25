@@ -19,7 +19,11 @@ function tactical_loop(setting, team1, team2)
       --start with team 2
   elseif setting == 1 then
     --start with team 1
+    battle_order[1] =  team1
+    battle_order[2] =  team2
   elseif setting == 2 then
     --start with team 2
+    battle_order[1] =  team2
+    battle_order[2] =  team1
   end
 end
