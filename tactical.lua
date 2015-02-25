@@ -1,6 +1,8 @@
 --tactical battle map
 
-function tactical_loop(setting, team1, team2)
+--create the battle order table consisting of 2 teams.
+function assign_teams_to_battle_order(setting, team1, team2)
+  battle_state = "start"
   battle_order={}
   if setting == 0 then
     while(team1_initiative_roll ~= team2_initiative_roll) do
@@ -25,5 +27,6 @@ function tactical_loop(setting, team1, team2)
     --start with team 2
     battle_order[1] =  team2
     battle_order[2] =  team1
-  end
+  end --teams are not in battle order, time to start the battle.
 end
+--teams, should be premade
