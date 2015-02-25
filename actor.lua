@@ -222,10 +222,10 @@ function create_actor_blank() --create a blank actor
       sex = math.random(0,1), --0 female, 1 male
       strength = 1, --carry weight, chance to brake shields, and pierce armor.
       agility =  1, --chance to hit, and dodge
-      intel   =  1,
+      intel   =  1, --resistance to insanity, fear, magic, etc. mana points?
       stamina =  1, -- chance to become winded during fighting.  after stamina ammoutn of moves you start rolling for winded and tired status.
       luck    =  1, -- chance to beat the hit/miss roll
-      charisma = 1,
+      charisma = 1, --leadership, and persuasion checks
       health = 1,
       maxhealth = 1,
       background = "None",
@@ -240,6 +240,19 @@ function create_actor_blank() --create a blank actor
       a_status = {crippled_left_leg=0, crippled_right_leg=0, crippled_left_arm=0, crippled_right_arm=0, 
       	unconcious=0, dead=0, blind=0, paralyzed=0, drunk=0,asleep=0,tired=0,afraid=0,bezerk=0,insane=0,
       	deathwish=0,spaced=0}
+      s_skills = {
+      	--social
+      	persuasion=0,leadership=0,fasttalk=0, seduce=0, haggling=0,begging=0,
+      	--artisan
+      	lockpick=0,sneak=0,hide=0,weaponsmith=0,armorsmith=0,smithing=0,woodworking=0,appraise=0,pickpocket=0,
+      	fletching=0,bowmaking=0,weaponlore=0,armorlore=0,alchemy=0,reading=0,scribe=0,
+      	--support
+      	firstaid=0,treatpoison=0,makepoison=0,medicallore=0,
+      	--combat
+      	weararmor=0,shieldblock=0,dodgingmelee=0,dodgingprojectiles=0, weaponparry=0, itemlore=0,
+      	archery=0,axes=0, sword=0,polearm=0,macehammer=0,saber=0,dagger=0,grapple=0,dirtyfighting=0,
+      	shieldbash=0,tackle=0
+      	}
       
    }
    return a --return the actor to the "pointer" hehe.
