@@ -64,18 +64,18 @@ function love.load()
 end
 
 function love.update()
-   if game.play_mode == "tactical" then
-   	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
-   	update_selected_tile()
-   elseif game.play_mode == "exit" then
+   if game.play_mode == "exit" then
    	love.event.quit()
    --love.update()
-   elseif game.play_mode == "player turn" then
+   elseif game.play_mode == "tactical" then -- this shouldnt happen?
+   	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
+   	update_selected_tile()
+   elseif game.play_mode == "tactical player turn" then
 	-- accept input from player
 	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
    	update_selected_tile()
-   elseif game.play_mode == "player end turn" then
-	game.play_mode = "npc turn"
+   elseif game.play_mode == "tactical player end turn" then
+	game.play_mode = "tactical npc turn"
    elseif game.play_mode == "npc turn" then
    	--move npc's
 	-- game.play_mode = "player turn"
