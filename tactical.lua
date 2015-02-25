@@ -1,4 +1,17 @@
 --tactical battle map
+--load_tactical_map
+-- -- assign_teams_to_battle_order(0, player_team, monsters)
+-- -- position_teams_on_the_map()
+-- -- update_game_state
+
+--love.update()
+-- --if game.state == "player turn" then
+    -- accept input from player
+   --elseif game.state == "player end turn" then
+    -- game.state = "npc turn"
+   --elseif game.state == "npc turn" then
+    -- move npc's
+    -- game.state = "player turn"
 
 --create the battle order table consisting of 2 teams.
 function assign_teams_to_battle_order(setting, team1, team2)
