@@ -220,11 +220,11 @@ function create_actor_blank() --create a blank actor
       name = "random",
       a_type = "human",
       sex = math.random(0,1), --0 female, 1 male
-      strength = 1,
-      agility =  1,
+      strength = 1, --carry weight, chance to brake shields, and pierce armor.
+      agility =  1, --chance to hit, and dodge
       intel   =  1,
-      stamina =  1,
-      luck    =  1,
+      stamina =  1, -- chance to become winded during fighting.  after stamina ammoutn of moves you start rolling for winded and tired status.
+      luck    =  1, -- chance to beat the hit/miss roll
       charisma = 1,
       health = 1,
       maxhealth = 1,
@@ -234,7 +234,13 @@ function create_actor_blank() --create a blank actor
       current_stat = 1,
       max_stat = 6,
       loc_x = 0,
-      loc_y = 0
+      loc_y = 0,
+      --dice modifiers
+      focused = 0, --0 not focused, 1 focused
+      a_status = {crippled_left_leg=0, crippled_right_leg=0, crippled_left_arm=0, crippled_right_arm=0, 
+      	unconcious=0, dead=0, blind=0, paralyzed=0, drunk=0,asleep=0,tired=0,afraid=0,bezerk=0,insane=0,
+      	deathwish=0,spaced=0}
+      
    }
    return a --return the actor to the "pointer" hehe.
 end
