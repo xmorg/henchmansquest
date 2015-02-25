@@ -45,7 +45,11 @@ function love.mousepressed(x, y, button)
       game.mouse_last_x =  love.mouse.getX()
       game.mouse_last_y =  love.mouse.getY()
       --game.give_direction = "Scrolling"
-      --did we click on a particular playER? if tes, give that plater focus and give that user focus.
+      --did we click on a particular actor? if yes, give that actor focus.
+      --did a user have focus, and a new tile was clicked on?
+      	--is that tile movable? (action points, not blocked)-> move here
+      	--does this tile contain and enemy? attack!
+      	--does this tile contain a friend? (help, attack, etc)
    elseif button == "wu" and game.play_mode == "tactical" then
       t = 1
       game.zoom_level = game.zoom_level + 0.2
