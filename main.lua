@@ -69,6 +69,14 @@ function love.update()
    	update_selected_tile()
    elseif game.play_mode == "exit" then
    	love.event.quit()
+   --love.update()
+   elseif game.play_mode == "player turn" then
+	-- accept input from player
+   elseif game.play_mode == "player end turn" then
+	-- game.play_mode = "npc turn"
+   elseif game.play_mode == "npc turn" then
+   	--move npc's
+	-- game.play_mode = "player turn"
    end
 end
 
