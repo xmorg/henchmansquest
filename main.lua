@@ -106,5 +106,10 @@ function love.draw()
    elseif game.play_mode == "tactical" then
       draw_tiles()
       draw_select_grid()
+   elseif game.play_mode == "tactical player turn" then
+      draw_tiles()
+      draw_select_grid()
+      --does an actor have focus?
+      	--draw movable tiles
    end
 end
