@@ -72,8 +72,10 @@ function love.update()
    --love.update()
    elseif game.play_mode == "player turn" then
 	-- accept input from player
+	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
+   	update_selected_tile()
    elseif game.play_mode == "player end turn" then
-	-- game.play_mode = "npc turn"
+	game.play_mode = "npc turn"
    elseif game.play_mode == "npc turn" then
    	--move npc's
 	-- game.play_mode = "player turn"
