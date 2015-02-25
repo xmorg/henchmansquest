@@ -41,6 +41,11 @@ function love.mousepressed(x, y, button)
       game.mouse_last_x =  love.mouse.getX()
       game.mouse_last_y =  love.mouse.getY()
       game.give_direction = "Scrolling"
+   elseif button == "l" and game.play_mode == "tactical player turn" then
+      game.mouse_last_x =  love.mouse.getX()
+      game.mouse_last_y =  love.mouse.getY()
+      --game.give_direction = "Scrolling"
+      --did we click on a particular playER? if tes, give that plater focus and give that user focus.
    elseif button == "wu" and game.play_mode == "tactical" then
       t = 1
       game.zoom_level = game.zoom_level + 0.2
@@ -112,44 +117,7 @@ function love.mousereleased(x, y, button)
       end
    end
 end
-function on_plow_where_click()
-	if game_map[game.tile_selected_y][game.tile_selected_x] > 2 then
-   	game_directives.job_type = "None."
-   	game_directives.active = 0
-   	game.give_direction = "Clear this area first"
-   else
-   	update_directives_loc(300, 1)
-   	game_directives.job_type = "Make garden"
-   	game.give_direction = "None"
-   	villagers_do_job(game_directives.location_x, game_directives.location_y, "farmer")
-   	play_sound(sound_click)
-   end -- game_map[game.tile_selected_y][game.tile_selected_x] > 2 then
-end
-function on_cut_where_click()
-	if game_map[game.tile_selected_y][game.tile_selected_x] >= 3 and game_map[game.tile_selected_y][game.tile_selected_x] <= 20 then
-   		update_directives_loc(300, 1)
-   		game_directives.job_type = "Cut trees"
-   		game.give_direction = "None"
-   		villagers_do_job(game_directives.location_x, game_directives.location_y , "woodcutter")
-   		play_sound(sound_treecutting)
-  	elseif game_map[game.tile_selected_y][game.tile_selected_x] == 57 or game_map[game.tile_selected_y][game.tile_selected_x] == 58 then
-  		update_directives_loc(300, 1)
-  		game_directives.job_type = "Cut sakura"
-  		game.give_direction = "None"
-  		villagers_do_job(game_directives.location_x, game_directives.location_y, "woodcutter")
-  		play_sound(sound_treecutting)
-  	elseif game_map[game.tile_selected_y][game.tile_selected_x] == 59 or game_map[game.tile_selected_y][game.tile_selected_x] == 60 then
-  		update_directives_loc(300, 1)
-  		game_directives.job_type = "Cut bamboo"
-  		game.give_direction = "None"
-  		villagers_do_job(game_directives.location_x, game_directives.location_y, "woodcutter")
-  		play_sound(sound_treecutting)
-  	else
-  		game_directives.job_type = "No Trees here" --error you cant find any wood here.
-  		game_directives.active = 0
-  		game.give_direction = "No Trees here"
-  	end -- game_map[game.tile_selected_y][game.tile_selected_x] 
-end
+
 function on_dig_where_click()
 	if game_map[game.tile_selected_y][game.tile_selected_x] > 2 and game_map[game.tile_selected_y][game.tile_selected_x] ~= 55 and game_map[game.tile_selected_y][game.tile_selected_x] ~= 56 then
    	game_directives.job_type = "None."
