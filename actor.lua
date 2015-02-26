@@ -239,7 +239,7 @@ function create_actor_blank() --create a blank actor
       focused = 0, --0 not focused, 1 focused
       a_status = {crippled_left_leg=0, crippled_right_leg=0, crippled_left_arm=0, crippled_right_arm=0, 
       	unconcious=0, dead=0, blind=0, paralyzed=0, drunk=0,asleep=0,tired=0,afraid=0,bezerk=0,insane=0,
-      	deathwish=0,spaced=0}
+      	deathwish=0,spaced=0},
       s_skills = {
       	--social
       	persuasion=0,leadership=0,fasttalk=0, seduce=0, haggling=0,begging=0,
