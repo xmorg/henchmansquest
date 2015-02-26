@@ -14,6 +14,12 @@
     -- game.state = "player turn"
 
 --create the battle order table consisting of 2 teams.
+function create_empty_team() --create an empty team
+    t = {}
+    --t.morale = 0
+    return t
+end
+
 function assign_teams_to_battle_order(setting, team1, team2)
   battle_state = "start"
   battle_order={}
