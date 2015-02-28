@@ -38,7 +38,8 @@ game = {
 
 function love.keypressed(key)
    if key == "escape" then
-      love.event.quit()
+      --love.event.quit()
+      play_mode = "menu"
    end
    if key == "c" and game.play_mode == "tactical" then
       --game/zoom_level
