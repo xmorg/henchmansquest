@@ -23,6 +23,7 @@ game = {
    mouse_last_x =0,
    mouse_last_y =0,
    play_mode = "menu",
+   
    give_direction = "None",
    screen_width = 800,
    screen_height = 600,
@@ -30,6 +31,7 @@ game = {
    tile_selected_x = 1,
    tile_selected_y = 1,
    zoom_level = 1
+   
 }
 
 --require("draw")
@@ -113,3 +115,5 @@ function love.draw()
       	--draw movable tiles
    end
 end
+
+
