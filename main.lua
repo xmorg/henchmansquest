@@ -95,11 +95,18 @@ function draw_chargen()
       love.graphics.print("Agility", 10, 224)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,221)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 241)
+      love.graphics.print("Intelligence", 10, 224)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,241)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 261)
+      love.graphics.print("Stamina", 10, 224)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,261)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 281)
+      love.graphics.print("Charisma", 10, 224)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,281)
+      love.graphics.draw(ui_pack, ui_pack_editfield, 0, 301)
+      love.graphics.print("Luck", 10, 224)
+      love.graphics.draw(ui_pack, ui_pack_plusminus, 200,301)
+      
       --display_actor_stats(game.player, editing)--actor object, boolean viewable
 end
 
