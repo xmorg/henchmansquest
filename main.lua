@@ -25,8 +25,8 @@ game = {
    play_mode = "menu",
    
    give_direction = "None",
-   screen_width = 800,
-   screen_height = 600,
+   screen_width = 1024,
+   screen_height = 768,
    scroll_speed = 3,
    tile_selected_x = 1,
    tile_selected_y = 1,
