@@ -88,7 +88,7 @@ end
 function draw_chargen()
       love.graphics.draw(cg_bg)
       
-      love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width -200, 0)
+      love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width -100, game.screen_height-20)
       
       love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width/2, 0)
       love.graphics.print("Name", game.screen_width/2 +30 , 4)
