@@ -84,18 +84,15 @@ function love.update()
    end
 end
 
-function love.draw()
-   --love.graphics.draw( image, quad, x, y, r, sx, sy)
-   if game.play_mode == "menu" then
-      draw_menu()
-      love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
-   elseif game.play_mode == "character generator" then
+function draw_chargen()
       love.graphics.draw(cg_bg)
       love.graphics.draw(ui_pack, ui_pack_editfield, game.screen_width/2, 0)
       love.graphics.print("Name", game.screen_width/2 +30 , 4)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 200)
+      love.graphics.print("Strength", 10, 203)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,200)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 221)
+      ove.graphics.print("Agility", 10, 224)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,221)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 241)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,241)
@@ -103,8 +100,16 @@ function love.draw()
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,261)
       love.graphics.draw(ui_pack, ui_pack_editfield, 0, 281)
       love.graphics.draw(ui_pack, ui_pack_plusminus, 200,281)
-      
       --display_actor_stats(game.player, editing)--actor object, boolean viewable
+end
+
+function love.draw()
+   --love.graphics.draw( image, quad, x, y, r, sx, sy)
+   if game.play_mode == "menu" then
+      draw_menu()
+      love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
+   elseif game.play_mode == "character generator" then
+      draw_chargen()
    elseif game.play_mode == "tactical" then
       draw_tiles()
       draw_select_grid()
