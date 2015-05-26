@@ -38,8 +38,8 @@ game = {
 
 function love.keypressed(key)
    if key == "escape" then
-      --love.event.quit()
-      play_mode = "menu"
+      love.event.quit()
+      --play_mode = "menu"
    end
    if key == "c" and game.play_mode == "tactical" then
       --game/zoom_level
@@ -83,7 +83,7 @@ end
 function love.update()
    if game.play_mode == "exit" then
    	love.event.quit()
-   --love.update()
+       --love.update()
    elseif game.play_mode == "tactical" then -- this shouldnt happen?
    	update_checkscrolling(love.mouse.getX(), love.mouse.getY())
    	update_selected_tile()
