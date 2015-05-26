@@ -64,6 +64,20 @@ function love.load()
    cg_selector = love.graphics.newImage("data/ui/09_selector.png")
    on_load_tiles()
    game.player = create_actor_blank()
+   flags = {
+            fullscreen = true,
+            fullscreentype = "normal",
+            vsync = true,
+            fsaa = 0,
+            resizable = false,
+            borderless = false,
+            centered = true,
+            display = 1,
+            minwidth = 1,
+            minheight = 1 
+         }
+         love.window.setMode( 0, 0, flags )
+         fullscreen_hack = "yes"
 end
 
 function love.update()
