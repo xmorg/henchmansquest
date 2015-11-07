@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="250" tileheight="129" nextobjectid="1">
+ <tileset firstgid="1" name="floor" tilewidth="250" tileheight="129" tilecount="20">
+  <tile id="0">
+   <image width="250" height="129" source="../tiles/tile001.png"/>
+  </tile>
+  <tile id="1">
+   <image width="250" height="129" source="../tiles/tile002.png"/>
+  </tile>
+  <tile id="2">
+   <image width="250" height="129" source="../tiles/tile003.png"/>
+  </tile>
+  <tile id="3">
+   <image width="250" height="129" source="../tiles/tile004.png"/>
+  </tile>
+  <tile id="4">
+   <image width="250" height="129" source="../tiles/tile005.png"/>
+  </tile>
+  <tile id="5">
+   <image width="250" height="129" source="../tiles/tile006.png"/>
+  </tile>
+  <tile id="6">
+   <image width="250" height="129" source="../tiles/tile007.png"/>
+  </tile>
+  <tile id="7">
+   <image width="250" height="129" source="../tiles/tile008.png"/>
+  </tile>
+  <tile id="8">
+   <image width="250" height="129" source="../tiles/tile009.png"/>
+  </tile>
+  <tile id="9">
+   <image width="250" height="129" source="../tiles/tile010.png"/>
+  </tile>
+  <tile id="10">
+   <image width="250" height="129" source="../tiles/tile011.png"/>
+  </tile>
+  <tile id="11">
+   <image width="250" height="129" source="../tiles/tile012.png"/>
+  </tile>
+  <tile id="12">
+   <image width="250" height="129" source="../tiles/tile013.png"/>
+  </tile>
+  <tile id="13">
+   <image width="250" height="129" source="../tiles/tile014.png"/>
+  </tile>
+  <tile id="14">
+   <image width="250" height="129" source="../tiles/tile015.png"/>
+  </tile>
+  <tile id="15">
+   <image width="250" height="129" source="../tiles/tile016.png"/>
+  </tile>
+  <tile id="16">
+   <image width="250" height="129" source="../tiles/tile017.png"/>
+  </tile>
+  <tile id="17">
+   <image width="250" height="129" source="../tiles/tile018.png"/>
+  </tile>
+  <tile id="18">
+   <image width="250" height="129" source="../tiles/tile998.png"/>
+  </tile>
+  <tile id="19">
+   <image width="250" height="129" source="../tiles/tile999.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="21" name="WallTiles" tilewidth="250" tileheight="304" tilecount="9">
+  <tile id="0">
+   <image width="250" height="304" source="../walls/cube_wall001.png"/>
+  </tile>
+  <tile id="1">
+   <image width="250" height="304" source="../walls/cube_wall002.png"/>
+  </tile>
+  <tile id="2">
+   <image width="250" height="304" source="../walls/cube_wall003.png"/>
+  </tile>
+  <tile id="3">
+   <image width="250" height="304" source="../walls/cube_wall004.png"/>
+  </tile>
+  <tile id="4">
+   <image width="250" height="304" source="../walls/cube_wall005.png"/>
+  </tile>
+  <tile id="5">
+   <image width="250" height="304" source="../walls/cube_wall006.png"/>
+  </tile>
+  <tile id="6">
+   <image width="250" height="304" source="../walls/cube_wall007.png"/>
+  </tile>
+  <tile id="7">
+   <image width="250" height="304" source="../walls/cube_wall008.png"/>
+  </tile>
+  <tile id="8">
+   <image width="250" height="304" source="../walls/cube_wall009.png"/>
+  </tile>
+ </tileset>
+ <layer name="Floor" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjY2BgYBvFo3gUj+JRPIpJxABmswlh
+  </data>
+ </layer>
+ <layer name="Walls" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyTYGBgkKAyZiMTU9s8XGZTwzw2GpqHy1xS7aJ2XMH0YAODKfzoERe49FAz/RFSixwflKYHbPFLL/OIDRtS/TuU0x+6eeSkHXQ91C7nQRgAHvoRaw==
+  </data>
+ </layer>
+</map>
