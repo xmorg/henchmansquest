@@ -67,9 +67,7 @@ function on_load_tiles() --load the tiles
       else 
 	 flags = {
 	    fullscreen = true,
-	    fullscreentype = "normal",
 	    vsync = true,
-	    fsaa = 0,
 	    resizable = false,
 	    borderless = false,
 	    centered = true,

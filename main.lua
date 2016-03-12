@@ -22,7 +22,7 @@ game = {
    draw_x = -600,
    mouse_last_x =0,
    mouse_last_y =0,
-   play_mode = "menu",
+   play_mode = "tactical",
    
    give_direction = "None",
    screen_width = 1024,
@@ -66,9 +66,7 @@ function love.load()
    game.player = create_actor_blank()
    flags = {
             fullscreen = true,
-            fullscreentype = "normal",
             vsync = true,
-            fsaa = 0,
             resizable = false,
             borderless = false,
             centered = true,
@@ -130,6 +128,7 @@ end
 
 function love.draw()
    --love.graphics.draw( image, quad, x, y, r, sx, sy)
+	love.graphics.setColor(200       ,0,0,0)
    if game.play_mode == "menu" then
       draw_menu()
       love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
