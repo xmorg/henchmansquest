@@ -3,6 +3,8 @@ require("mouse")
 require("actor")
 require("primatives")
 
+require("tiled")
+
 tile_images = {}
 wall_images = {}
 tile_map = {}
@@ -76,6 +78,8 @@ function love.load()
          }
          love.window.setMode( 0, 0, flags )
          fullscreen_hack = "yes"
+	 TiledMap_Load("tidata/class_school01.tmx")
+
 end
 
 function love.update()
