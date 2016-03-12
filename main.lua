@@ -21,7 +21,7 @@ game = {
    player_loc_x =0,
    player_loc_y =0,
    draw_y = 100,
-   draw_x = -600,
+   draw_x = 100,
    mouse_last_x =0,
    mouse_last_y =0,
    play_mode = "tactical",
@@ -132,20 +132,23 @@ end
 
 function love.draw()
    --love.graphics.draw( image, quad, x, y, r, sx, sy)
-	love.graphics.setColor(200       ,0,0,0)
+   --love.graphics.setColor(200       ,0,0,0)
+   love.graphics.setBackgroundColor(0x80,0x80,0x80)
    if game.play_mode == "menu" then
       draw_menu()
       love.graphics.print(love.mouse.getX().."X"..love.mouse.getY(), 10,10 ) --get some loc
    elseif game.play_mode == "character generator" then
       draw_chargen()
    elseif game.play_mode == "tactical" then
-      draw_tiles()
-      draw_select_grid()
+      TiledMap_DrawNearCam(game.draw_x,game.draw_y)
+      --draw_tiles()
+      --draw_select_grid()
    elseif game.play_mode == "tactical player turn" then
-      draw_tiles()
-      draw_select_grid()
+      TiledMap_DrawNearCam(game.draw_x,game.draw_y)
+      --draw_tiles()
+      --draw_select_grid()
       --does an actor have focus?
-      	--draw movable tiles
+      --draw movable tiles
    end
 end
 

@@ -6,6 +6,9 @@
 -- NOTE : function GetMousePosOnMap () return gMouseX+gCamX-gScreenW/2,gMouseY+gCamY-gScreenH/2 end
 
 kTileSize = 32
+hqTileXSize = 250
+hqTileYSize = 125
+
 kMapTileTypeEmpty = 0
 local floor = math.floor
 local ceil = math.ceil
@@ -27,14 +30,16 @@ function TiledMap_Load (filepath,tilesize,spritepath_removeold,spritepath_prefix
         local raw = love.image.newImageData(path)
         local w,h = raw:getWidth(),raw:getHeight()
         local gid = first_gid
-        local e = kTileSize
-        for y=0,floor(h/kTileSize)-1 do
-        for x=0,floor(w/kTileSize)-1 do
-            local sprite = love.image.newImageData(kTileSize,kTileSize)
-            sprite:paste(raw,0,0,x*e,y*e,e,e)
-            gTileGfx[gid] = love.graphics.newImage(sprite)
-            gid = gid + 1
-        end
+        local e = hqTileXSize --kTileSize
+	--tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
+	--tile_y = game.draw_y+(y - x) * 125 /2 + (129/2) --129 / 2 + 64
+        for y=0,floor(h/hqTileYSize)-1 do --floor(h/kTileSize)-1 do
+	   for x=0,floor(w/hqTileXSize)-1 do --floor(w/kTileSize)-1 do
+	      local sprite = love.image.newImageData(hqTileXSize,hqTileYSize)
+	      sprite:paste(raw,0,0,x*e,y*e,e,e)
+	      gTileGfx[gid] = love.graphics.newImage(sprite)
+	      gid = gid + 1
+	   end
         end
     end
 end
@@ -117,25 +122,27 @@ function TiledMap_GetTilePosUnderMouse (mx,my,camx,camy)
 end
 
 function TiledMap_DrawNearCam (camx,camy,fun_layercallback)
+   --hqTileXSize = 250
+   --hqTileYSize = 125
     camx,camy = floor(camx),floor(camy)
     local screen_w = love.graphics.getWidth()
     local screen_h = love.graphics.getHeight()
-    local minx,maxx = floor((camx-screen_w/2)/kTileSize),ceil((camx+screen_w/2)/kTileSize)
-    local miny,maxy = floor((camy-screen_h/2)/kTileSize),ceil((camy+screen_h/2)/kTileSize)
+    local minx,maxx = floor((camx-screen_w/2)/hqTileXSize),ceil((camx+screen_w/2)/hqTileXSize)
+    local miny,maxy = floor((camy-screen_h/2)/hqTileYSize),ceil((camy+screen_h/2)/hqTileYSize)
     for z = 1,#gMapLayers do
-    if (fun_layercallback) then fun_layercallback(z,gMapLayers[z]) end
-    if (TiledMap_IsLayerVisible(z)) then
-    for x = minx,maxx do
-    for y = miny,maxy do
-        local gfx = gTileGfx[TiledMap_GetMapTile(x,y,z)]
-        if (gfx) then
-            local sx = x*kTileSize - camx + screen_w/2
-            local sy = y*kTileSize - camy + screen_h/2
-            love.graphics.draw(gfx,sx,sy) -- x, y, r, sx, sy, ox, oy
-        end
-    end
-    end
-    end
+       if (fun_layercallback) then fun_layercallback(z,gMapLayers[z]) end
+       if (TiledMap_IsLayerVisible(z)) then
+	  for x = minx,maxx do
+	     for y = miny,maxy do
+		local gfx = gTileGfx[TiledMap_GetMapTile(x,y,z)]
+		if (gfx) then
+		   local sx = x*hqTileXSize - camx + screen_w/2
+		   local sy = y*hqTileYSize - camy + screen_h/2
+		   love.graphics.draw(gfx,sx,sy) -- x, y, r, sx, sy, ox, oy
+		end
+	     end
+	  end
+       end
     end
 end
 
