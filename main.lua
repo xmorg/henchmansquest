@@ -10,8 +10,8 @@ wall_images = {}
 tile_map = {}
 wall_map = {}
 
-ground_tiles_x = 10
-ground_tiles_y = 20
+--ground_tiles_x = 10
+--ground_tiles_y = 20
 ground_pic_size_x = 320
 ground_pic_size_y = 320
 ground_quad = {}         
@@ -20,8 +20,8 @@ game = {
    tilecount = 10,
    player_loc_x =0,
    player_loc_y =0,
-   draw_y = 100,
-   draw_x = 100,
+   draw_y = -200,
+   draw_x = 400,
    mouse_last_x =0,
    mouse_last_y =0,
    play_mode = "tactical",
@@ -29,9 +29,11 @@ game = {
    give_direction = "None",
    screen_width = 1024,
    screen_height = 768,
+   tile_size_x = 250, tile_size_y = 129,
    scroll_speed = 3,
-   tile_selected_x = 1,
-   tile_selected_y = 1,
+   tile_selected_x = 10,
+   tile_selected_y = 10,
+   tile_center_scrolled_x = 5, tile_center_scrolled_y = 5, scroll_pixel_count_x = 0, scroll_pixel_count_y = 0,
    zoom_level = 1
    
 }

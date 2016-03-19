@@ -7,7 +7,11 @@
 
 kTileSize = 32
 hqTileXSize = 250
-hqTileYSize = 125
+hqTileYSize = 129
+wallXSize = 250
+wallYSize = 512
+hqTileXSizeHalf = hqTileXSize / 2
+hqTileYSizeHalf = hqTileYSize / 2
 
 kMapTileTypeEmpty = 0
 local floor = math.floor
@@ -121,30 +125,7 @@ function TiledMap_GetTilePosUnderMouse (mx,my,camx,camy)
             floor((my+camy-love.graphics.getHeight()/2)/kTileSize)
 end
 
-function TiledMap_DrawNearCam (camx,camy,fun_layercallback)
-   --hqTileXSize = 250
-   --hqTileYSize = 125
-    camx,camy = floor(camx),floor(camy)
-    local screen_w = love.graphics.getWidth()
-    local screen_h = love.graphics.getHeight()
-    local minx,maxx = floor((camx-screen_w/2)/hqTileXSize),ceil((camx+screen_w/2)/hqTileXSize)
-    local miny,maxy = floor((camy-screen_h/2)/hqTileYSize),ceil((camy+screen_h/2)/hqTileYSize)
-    for z = 1,#gMapLayers do
-       if (fun_layercallback) then fun_layercallback(z,gMapLayers[z]) end
-       if (TiledMap_IsLayerVisible(z)) then
-	  for x = minx,maxx do
-	     for y = miny,maxy do
-		local gfx = gTileGfx[TiledMap_GetMapTile(x,y,z)]
-		if (gfx) then
-		   local sx = x*hqTileXSize - camx + screen_w/2
-		   local sy = y*hqTileYSize - camy + screen_h/2
-		   love.graphics.draw(gfx,sx,sy) -- x, y, r, sx, sy, ox, oy
-		end
-	     end
-	  end
-       end
-    end
-end
+
 
 
 -- ***** ***** ***** ***** ***** xml parser
@@ -249,3 +230,41 @@ function TiledMap_Parse(filename)
     local layers = getLayers(xml[2])
     return tiles, layers
 end
+
+
+function TiledMap_DrawNearCam (camx,camy,fun_layercallback)
+   --hqTileXSize = 250  --hqTileYSize = 125
+   --tile_x = game.draw_x+(y + x) * 125 +250  --250 + 125
+   --tile_y = game.draw_y+(y - x) * 125 /2 + (129/2) --129 / 2 + 64
+   camx,camy = floor(camx),floor(camy)
+   local screen_w = love.graphics.getWidth()
+   local screen_h = love.graphics.getHeight()
+   --local minx,maxx = floor((camx-screen_w/2)/hqTileXSize), ceil((camx+screen_w/2)/hqTileXSize)
+   --local miny,maxy = floor((camy-screen_h/2)/hqTileYSize),ceil((camy+screen_h/2)/hqTileYSize ) 
+   local z=1
+   for y = game.tile_center_scrolled_y - 5, game.tile_center_scrolled_y+5 do
+      for x = game.tile_center_scrolled_x- 5, game.tile_center_scrolled_x+5 do
+	 if x > 0 and x < TiledMap_GetMapW()  and y > 0 and y < TiledMap_GetMapH() then
+	    local gfx = gTileGfx[TiledMap_GetMapTile(x,y,z)]
+	    local sx = (x - y) * hqTileXSizeHalf + camx
+	    local sy = (x + y) * hqTileYSizeHalf + camy
+	    love.graphics.draw(gfx,sx,sy) -- x, y, r, sx, sy, ox, oy
+	 end
+      end
+   end
+end
+      --if (fun_layercallback) then fun_layercallback(z,gMapLayers[z]) end
+      --if (TiledMap_IsLayerVisible(z)) then
+      --	 for y = minx,maxx do
+      --	    for x = miny,maxy do
+      --	       local gfx = gTileGfx[TiledMap_GetMapTile(x,y,z)]
+      --	       if (gfx) then
+      --		  --local sx = x*hqTileXSize - camx + screen_w/2
+      --		  --local sy = y*hqTileYSize - camy + screen_h/2
+      --		  local sx = (x - y) * hqTileXSizeHalf
+      --		  local sy = (x + y) * hqTileYSizeHalf
+      --		  love.graphics.draw(gfx,sx,sy) -- x, y, r, sx, sy, ox, oy
+      --	       end
+      --	    end
+      --	 end
+      --    end

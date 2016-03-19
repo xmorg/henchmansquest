@@ -1,3 +1,5 @@
+require("tiled")
+
 button_newgame = {screen = "title menu", x = 40, y = 205, w = 200, h = 40 }
 button_continue = {screen = "title menu", x = 40, y = 268, w = 200, h = 40 }
 button_options = {screen = "title menu", x = 40, y = 330, w = 200, h = 40 }
@@ -74,15 +76,41 @@ function update_checkscrolling(mx, my)
    elseif game.mouse_last_y <  my and love.mouse.isDown(1) and game.give_direction == "Scrolling" then
       game.draw_y = game.draw_y+game.scroll_speed
    end
-   if love.keyboard.isDown("up") then
+   if love.keyboard.isDown("up") then      --scroll_pixel_count_x = 0, scroll_pixel_count_y = 0,
       game.draw_y = game.draw_y+game.scroll_speed
+      game.draw_x = game.draw_x-game.scroll_speed
+      game.scroll_pixel_count_y = game.scroll_pixel_count_y -game.scroll_speed
+      if game.scroll_pixel_count_y <= 0 then 
+	 game.scroll_pixel_count_y = game.scroll_pixel_count_y+game.tile_size_y --assuming it went negative
+	 game.tile_center_scrolled_y = game.tile_center_scrolled_y - 1
+      end
    elseif love.keyboard.isDown("down") then
       game.draw_y = game.draw_y-game.scroll_speed
+      game.draw_x = game.draw_x+game.scroll_speed
+      game.scroll_pixel_count_y = game.scroll_pixel_count_y +game.scroll_speed
+      if game.scroll_pixel_count_y >= game.tile_size_y then 
+	 game.scroll_pixel_count_y = 0 + (game.scroll_pixel_count_y - game.tile_size_y) --game.tile_size_y 
+	 game.tile_center_scrolled_y = game.tile_center_scrolled_y + 1
+      end
    elseif love.keyboard.isDown("left") then
       game.draw_x = game.draw_x+game.scroll_speed
+      game.draw_y = game.draw_y+game.scroll_speed
+      game.scroll_pixel_count_x = game.scroll_pixel_count_x -game.scroll_speed
+      if game.scroll_pixel_count_x <= 0 then 
+	 game.scroll_pixel_count_x = game.scroll_pixel_count_x +game.tile_size_x --game.tile_size_y 
+	 game.tile_center_scrolled_x = game.tile_center_scrolled_x - 1
+      end
    elseif love.keyboard.isDown("right") then
       game.draw_x = game.draw_x-game.scroll_speed
+      game.draw_y = game.draw_y-game.scroll_speed
+      game.scroll_pixel_count_x = game.scroll_pixel_count_x +game.scroll_speed
+      if game.scroll_pixel_count_x >= game.tile_size_x then 
+	 game.scroll_pixel_count_x = 0 + (game.scroll_pixel_count_x-game.tile_size_x) 
+	 game.tile_center_scrolled_x = game.tile_center_scrolled_x + 1
+      end
    end
+   --find the game.tile_center_scrolled_x and game.tile_center_scrolled_y
+   --if its not in the middle of the screen, put it there.
 end
 
 function update_selected_tile() -- wherever the mouse is, update the selected tile.
