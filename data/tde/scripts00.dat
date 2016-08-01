@@ -1,0 +1,6 @@
+#load races, art and names?
+#RACE:NAME:MALE ART:          FEMALE ART;
+race_obj:Human:human_male32x32.png:human_female32x32.png;
+race_obj:Human:human_male32x32.png:human_female32x32.png;
+race_obj:Dark Elf:NONE:darkelf_female32x32.png;
+race_obj:Hill Dwarf:dwarf_male_32.png:NONE;
